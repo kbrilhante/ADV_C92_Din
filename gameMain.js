@@ -13,6 +13,7 @@ writeScore();
 writeQA();
 
 function writeScore() {
+    console.log(p1Name + ": " + p1Score + " | " + p2Name + ": " + p2Score);
     document.getElementById("p1Score").innerHTML = p1Score;
     document.getElementById("p2Score").innerHTML = p2Score;
 }
@@ -32,7 +33,7 @@ function writeQA() {
 
 function send() {
     word = document.getElementById("word").value;
-    word = word.toLowerCase();
+    word = word.toUpperCase();
     console.log("Palavra: " + word);
     let wordReplace = word;
 
@@ -66,6 +67,7 @@ function send() {
 
         document.getElementById("output").innerHTML = outputHTML;
 
+        document.getElementById("word").value = "";
         document.getElementById("input").style.display = "none";
         document.getElementById("enviar").style.display = "none";
     }
@@ -77,4 +79,28 @@ function replaceAt(str, index, replacement) {
         replacement + 
         str.substring(index + 1);
     return replaced;
+}
+
+function check() {
+    const answer = document.getElementById("answer").value.toUpperCase();
+    // console.log(answer);
+    if (word === answer) {
+        // console.log("yay! =]");
+        if (questionCount % 2 == 0) {
+            // Player 2 scores
+            p2Score++;
+        } else {
+            // Player 1 scores
+            p1Score++;
+        }
+        writeScore();
+    } else {
+        console.log("nay! =[");
+    }
+    questionCount++;
+    writeQA();
+    document.getElementById("output").innerHTML = "";
+
+    document.getElementById("input").style.display = "flex";
+    document.getElementById("enviar").style.display = "inline-block";
 }
