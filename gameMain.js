@@ -27,8 +27,8 @@ function writeQA() {
         question = p2Name;
         answer = p1Name;
     }
-    document.getElementById("playerQuestion").innerHTML = "Turno de pergunta: " + question;
-    document.getElementById("playerAnswer").innerHTML = "Turno de resposta: " + answer;
+    document.getElementById("playerQuestion").innerHTML = "Question turn: " + question;
+    document.getElementById("playerAnswer").innerHTML = "Answer turn: " + answer;
 }
 
 function send() {
@@ -60,9 +60,9 @@ function send() {
         }
 
         const wordDisplay = "<h4 id='wordDisplay' class='display-4'>" + wordReplace + "</h4>";
-        const inputAnswer = "<label class='col-form-label'>Resposta: </label>" + 
-            "<input id='answer' type='text' class='form-control' placeholder='resposta'>"
-        const button = "<button onclick='check()' class='btn btn-warning col-6 mx-auto'>Checar</button>"
+        const inputAnswer = "<label class='col-form-label'>Answer: </label>" + 
+            "<input id='answer' type='text' class='form-control' placeholder='your answer'>"
+        const button = "<button onclick='check()' class='btn btn-warning col-6 mx-auto'>Check</button>"
         const outputHTML = wordDisplay + inputAnswer + button;
 
         document.getElementById("output").innerHTML = outputHTML;
