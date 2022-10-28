@@ -5,6 +5,10 @@ let p2Score = 0;
 let questionCount = 0;
 let word;
 
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+output.style.display = "none";
+
 document.getElementById("p1Name").innerHTML = p1Name + ": ";
 document.getElementById("p2Name").innerHTML = p2Name + ": ";
 
@@ -32,7 +36,8 @@ function writeQA() {
 }
 
 function send() {
-    word = document.getElementById("word").value;
+    const wordInput = document.getElementById("word")
+    word = wordInput.value;
     word = word.toUpperCase();
     console.log("Palavra: " + word);
     let wordReplace = word;
@@ -59,17 +64,19 @@ function send() {
             console.log(wordReplace);
         }
 
+        wordReplace = wordReplace.split('').join(' ');
+
         const wordDisplay = "<h4 id='wordDisplay' class='display-4'>" + wordReplace + "</h4>";
         const inputAnswer = "<label class='col-form-label'>Answer: </label>" + 
             "<input id='answer' type='text' class='form-control' placeholder='your answer'>"
         const button = "<button onclick='check()' class='btn btn-warning col-6 mx-auto'>Check</button>"
         const outputHTML = wordDisplay + inputAnswer + button;
 
-        document.getElementById("output").innerHTML = outputHTML;
+        output.innerHTML = outputHTML;
+        output.style.display = "grid";
 
-        document.getElementById("word").value = "";
-        document.getElementById("input").style.display = "none";
-        document.getElementById("enviar").style.display = "none";
+        wordInput.value = "";
+        input.style.display = "none";
     }
 }
 
@@ -94,8 +101,6 @@ function check() {
             p1Score++;
         }
         writeScore();
-    } else {
-        console.log("nay! =[");
     }
     questionCount++;
     writeQA();
