@@ -58,7 +58,7 @@ function send() {
         // substitui as letras nos 3 index sorteados por "_"
         for (const index of charIndex.values()){
             // console.log("Index: " + index);
-            const char = word[index];
+            // const char = word[index];
             // console.log("Char: " + char);
             wordReplace = replaceAt(wordReplace, index, "_");
             console.log(wordReplace);
